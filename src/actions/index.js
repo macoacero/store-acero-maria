@@ -32,6 +32,10 @@ export const loadingError = (bool) => ({
     type: "CLEAR_PRODUCTS"
   });
 
+  export const uploadRedeemProduct = () => ({
+    type: "REDEEM_PRODUCT"
+  });
+
 
   const headers = {
     "Content-Type": "application/json",
@@ -115,6 +119,28 @@ export const getProducts = () => {
         })
         .then((response) => response.json())
         .then((points) => dispatch(uploadPoint(points)))
+        .catch(() => dispatch(loadingError(true)));
+        
+    };
+  };
+
+
+  export const redeemProduct = () => {
+    return (dispatch) => {
+      dispatch(loadingError(false));
+  
+      fetch("https://coding-challenge-api.aerolab.co/redeem", {
+        method: 'POST',
+        headers
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw Error(response.statusText);
+          }  
+          return response;
+        })
+        .then((response) => response.json())
+        .then((productId) => dispatch(uploadPoint(productId)))
         .catch(() => dispatch(loadingError(true)));
         
     };

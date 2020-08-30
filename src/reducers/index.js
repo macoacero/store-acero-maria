@@ -33,8 +33,15 @@ const loadingUser = (state = [], action) => {
   switch (action.type) {
     case 'LOADING_USER':
       return action.user
-    case 'CLEAR_PRODUCTS':
-      return []
+    default:
+      return state
+  }
+}
+
+const uploadRedeemProduct = (state = [], action) => {
+  switch (action.type) {
+    case 'REDEEM_PRODUCT':
+      return action.user
     default:
       return state
   }
@@ -44,5 +51,6 @@ export default combineReducers({
   loadingUser,
   loadingProducts,
   loadingError,
-  loadingInProgress
+  loadingInProgress,
+  uploadRedeemProduct
 })
