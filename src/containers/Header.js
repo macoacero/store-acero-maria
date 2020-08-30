@@ -1,18 +1,17 @@
 import { connect } from "react-redux";
-import ProductsList from "../components/ProductsList";
-import { getProducts } from '../actions'
+import Header from "../components/Header";
+import { getUser } from '../actions'
 
 const mapStateToProps = (state) => ({
-  products: state.loadingProducts,
   hasError: state.loadingError,
-  isLoading: state.loadingInProgress,
+  user: state.loadingUser
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onLoadProd: () => dispatch(getProducts()),
+  onLoadUser: () => dispatch(getUser()),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ProductsList)
+)(Header)

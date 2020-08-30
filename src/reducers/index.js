@@ -18,11 +18,22 @@ const loadingInProgress = (state = false, action) => {
   }
 }
 
-const products = (state = [], action) => {
+const loadingProducts = (state = [], action) => {
   switch (action.type) {
-    case 'LOADING_SUCCESS':
+    case 'LOADING_PRODUCTS':
       return action.products
-    case 'CLEAR_REPOS':
+    case 'CLEAR_PRODUCTS':
+      return []
+    default:
+      return state
+  }
+}
+
+const loadingUser = (state = [], action) => {
+  switch (action.type) {
+    case 'LOADING_USER':
+      return action.user
+    case 'CLEAR_PRODUCTS':
       return []
     default:
       return state
@@ -30,7 +41,8 @@ const products = (state = [], action) => {
 }
 
 export default combineReducers({
-  products,
+  loadingUser,
+  loadingProducts,
   loadingError,
   loadingInProgress
 })
