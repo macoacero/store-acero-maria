@@ -6,6 +6,7 @@ const mapStateToProps = (state) => ({
   products: state.loadingProducts,
   hasError: state.loadingError,
   isLoading: state.loadingInProgress,
+  user: state.loadingUser
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

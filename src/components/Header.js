@@ -1,8 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
+import Select from "react-select";
 
+const options = [
+  { value: 1000, label: "1000" },
+  { value: 5000, label: "5000" },
+  { value: 7500, label: "7500" }
+];
 
 const Header = ({ onLoadUser, hasError, user }) => {
 
+const [points, setPoint] = useState("");
+  
 useEffect(() => {
   onLoadUser();
     }, [onLoadUser]);
@@ -15,6 +23,10 @@ useEffect(() => {
     )
   }
 
+  const handleChangePoints = points => {
+    setPoint(points);
+  };
+
   return (
     <React.Fragment>
       <div className="top-bar">
@@ -22,7 +34,11 @@ useEffect(() => {
         <div>{user.points}</div>
       </div>
       <div className="header">
-        <div className="row">
+        <div className="container">
+          <div className="row">
+            <Select options={options} value={points} onChange={handleChangePoints} />
+            {console.log(points.value)}
+          </div>
         </div>
       </div>
     </React.Fragment>

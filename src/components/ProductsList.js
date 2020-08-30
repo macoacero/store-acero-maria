@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import BuyBlue from '../images/icons/buy-blue.svg'
 
 
-const ProductsList = ({ onLoadProd, products, hasError, isLoading }) => {
+const ProductsList = ({ onLoadProd, products, hasError, isLoading, user }) => {
 
 useEffect(() => {
   onLoadProd();
@@ -30,8 +31,9 @@ useEffect(() => {
           products.map((product, i) =>
             <div className="col-sm-4">
               <div className="card" key={i}>
-                  <img alt="product" src={product.img.url}/>
-                  <div className="txt">
+                {user.points < product.cost ? <div>Faltan: {product.cost - user.points} Puntos</div> : <div><img alt="" src={BuyBlue} /></div>}
+                <img alt="product" src={product.img.url}/>
+                <div className="txt">
                   <span className="category" >
                     {product.category}
                   </span>
