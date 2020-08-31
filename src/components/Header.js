@@ -7,7 +7,7 @@ const options = [
   { value: 7500, label: "7500" }
 ];
 
-const Header = ({ onLoadUser, hasError, user }) => {
+const Header = ({ onLoadUser, hasError, user, loadPoints }) => {
 
 const [points, setPoint] = useState("");
   
@@ -25,6 +25,7 @@ useEffect(() => {
 
   const handleChangePoints = points => {
     setPoint(points);
+    loadPoints(points)
   };
 
   return (
@@ -36,7 +37,7 @@ useEffect(() => {
       <div className="header">
         <div className="container">
           <div className="row">
-            <Select options={options} value={points} onChange={handleChangePoints} />
+            <Select options={options} value={points} onChange={() => handleChangePoints(points)} />
             {console.log(points.value)}
           </div>
         </div>

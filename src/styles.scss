@@ -18,4 +18,9 @@ body {
 .card {
   background: #ffffff;
   margin-bottom: 15px;
+
+  &:after {
+    content: "";
+    position: absolute;
+  }
 }

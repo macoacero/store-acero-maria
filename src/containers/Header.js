@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onLoadUser: () => dispatch(getUser()),
-  handleChangePoints: () => dispatch(addPoints()),
+  loadPoints: (points) => dispatch(addPoints(points)),
 });
 
 export default connect(

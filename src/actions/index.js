@@ -1,45 +1,47 @@
 export const loadingError = (bool) => ({
-    type: "LOADING_ERROR",
-    hasErrored: bool
-  });
-  
-  export const loadingInProgress = (bool) => ({
-    type: "LOADING_IN_PROGRESS",
-    isLoading: bool
-  });
-  
-  export const loadingProducts = (products) => ({
-    type: "LOADING_PRODUCTS",
-    products
-  });
+  type: "LOADING_ERROR",
+  hasErrored: bool
+});
 
-  export const loadingUser = (user) => ({
-    type: "LOADING_USER",
-    user
-  });
+export const loadingInProgress = (bool) => ({
+  type: "LOADING_IN_PROGRESS",
+  isLoading: bool
+});
 
-  export const loadingHistory = (history) => ({
-    type: "LOADING_HISTORY",
-    history
-  });
+export const loadingProducts = (products) => ({
+  type: "LOADING_PRODUCTS",
+  products
+});
 
-  export const uploadPoint = (points) => ({
-    type: "UPLOAD_POINTS",
-    points
-  });
-  
-  export const clearProducts = () => ({
-    type: "CLEAR_PRODUCTS"
-  });
+export const loadingUser = (user) => ({
+  type: "LOADING_USER",
+  user
+});
 
-  export const uploadRedeemProduct = () => ({
-    type: "REDEEM_PRODUCT"
-  });
+export const loadingHistory = (history) => ({
+  type: "LOADING_HISTORY",
+  history
+});
+
+export const uploadPoint = (points) => ({
+  type: "UPLOAD_POINTS",
+  points
+});
+
+export const clearProducts = () => ({
+  type: "CLEAR_PRODUCTS"
+});
+
+export const uploadRedeemProduct = (productId) => ({
+  type: "REDEEM_PRODUCT",
+  productId
+});
 
 
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjQ0NmUzZjc0MjM1MjAwMWVkOTA5N2EiLCJpYXQiOjE1OTgzMjAxOTF9.SvYm_3UWhP11QddDsVSJU7rVdMnAzNzl9fLO4dcPc4k"
+const headers = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+  Authorization: "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjQ0NmUzZjc0MjM1MjAwMWVkOTA5N2EiLCJpYXQiOjE1OTgzMjAxOTF9.SvYm_3UWhP11QddDsVSJU7rVdMnAzNzl9fLO4dcPc4k"
 }
 
 export const getProducts = () => {
@@ -65,7 +67,6 @@ export const getProducts = () => {
     };
   };
   
-
   export const getUser = () => {
     return (dispatch) => {
       dispatch(loadingError(false));
@@ -102,14 +103,15 @@ export const getProducts = () => {
     };
   };
 
-
-  export const addPoints = () => {
+  export const addPoints = (points) => {
     return (dispatch) => {
+      const data = { "new Points": 1000 };
       dispatch(loadingError(false));
   
       fetch("https://coding-challenge-api.aerolab.co/user/points", {
         method: 'POST',
-        headers
+        headers,
+        body: JSON.stringify(data),
       })
         .then((response) => {
           if (!response.ok) {
@@ -124,24 +126,28 @@ export const getProducts = () => {
     };
   };
 
-
-  export const redeemProduct = () => {
+  export const redeemProduct = (productId) => {
     return (dispatch) => {
+
+      const data = { "productId": productId };
+
       dispatch(loadingError(false));
-  
-      fetch("https://coding-challenge-api.aerolab.co/redeem", {
-        method: 'POST',
-        headers
-      })
+
+      fetch('https://coding-challenge-api.aerolab.co/redeem', {
+        method: 'POST', 
+        headers,
+          body: JSON.stringify(data),
+        })
+        .then(response => response.json())
         .then((response) => {
           if (!response.ok) {
             throw Error(response.statusText);
           }  
           return response;
         })
-        .then((response) => response.json())
-        .then((productId) => dispatch(uploadPoint(productId)))
+        .then((productId) => dispatch(uploadRedeemProduct(productId)))
         .catch(() => dispatch(loadingError(true)));
-        
     };
   };
+
+
