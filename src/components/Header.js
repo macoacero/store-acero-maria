@@ -7,21 +7,13 @@ const options = [
   { value: 7500, label: "7500" }
 ];
 
-const Header = ({ onLoadUser, hasError, user, loadPoints }) => {
+const Header = ({ onLoadUser, user, loadPoints }) => {
 
 const [points, setPoint] = useState("");
   
 useEffect(() => {
   onLoadUser();
     }, [onLoadUser]);
-
-  if (hasError) {
-    return (
-      <div className="container">
-        <h6>Error cargando los pooductos. Por favor intente más tarde.</h6>
-      </div>
-    )
-  }
 
   const handleChangePoints = points => {
     setPoint(points);

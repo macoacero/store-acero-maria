@@ -38,6 +38,15 @@ const loadingUser = (state = [], action) => {
   }
 }
 
+const loadingHistory = (state = [], action) => {
+  switch (action.type) {
+    case 'LOADING_HISTORY':
+      return action.history
+    default:
+      return state
+  }
+}
+
 const uploadRedeemProduct = (state = [], action) => {
   switch (action.type) {
     case 'REDEEM_PRODUCT':
@@ -60,6 +69,7 @@ export default combineReducers({
   loadingProducts,
   loadingError,
   loadingInProgress,
+  loadingHistory,
   uploadRedeemProduct,
   errorRedeem
 })
