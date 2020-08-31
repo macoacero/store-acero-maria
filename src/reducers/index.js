@@ -55,7 +55,6 @@ const errorRedeem= (state = false, action) => {
       return state  }
 }
 
-
 export default combineReducers({
   loadingUser,
   loadingProducts,
