@@ -7,12 +7,13 @@ const mapStateToProps = (state) => ({
   hasError: state.loadingError,
   isLoading: state.loadingInProgress,
   user: state.loadingUser,
-  productId: state.uploadRedeemProduct
+  productId: state.uploadRedeemProduct,
+  errorRed: state.errorRedeem
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onLoadProd: () => dispatch(getProducts()),
-  onClickRedeem: (productId) => dispatch(redeemProduct(productId))
+  onClickRedeem: (productId) => dispatch(redeemProduct(productId)),
 });
 
 export default connect(

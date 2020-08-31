@@ -37,7 +37,7 @@ useEffect(() => {
       <div className="header">
         <div className="container">
           <div className="row">
-            <Select options={options} value={points} onChange={() => handleChangePoints(points)} />
+            <Select options={options} value={points} onChange={() => handleChangePoints(points.value)} />
             {console.log(points.value)}
           </div>
         </div>

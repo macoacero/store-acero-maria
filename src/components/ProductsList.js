@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import BuyBlue from '../images/icons/buy-blue.svg'
 
 
-const ProductsList = ({ onLoadProd, products, hasError, isLoading, user, onClickRedeem }) => {
+const ProductsList = ({ onLoadProd, products, hasError, isLoading, user, onClickRedeem, errorRed }) => {
 
 useEffect(() => {
   onLoadProd();
@@ -31,10 +31,12 @@ useEffect(() => {
           products.map((product, i) =>
             <div className="col-sm-4">
               <div className="card" key={i}>
-                <div className="">
+              {user.points >= product.cost ?
+                <div className="redeem-product">
                   {product.cost}
-                  <button className="" onClick={() => onClickRedeem(product.productId)}>Redimir ahora</button>
-                </div>
+                  <button className="" onClick={() => onClickRedeem(product._id)}>Redimir ahora</button>
+                  {errorRed ? "No se pudo redimir el producto. Intente más tarde" : null}
+                </div> : null}
                 {user.points < product.cost ? <div>Faltan: {product.cost - user.points} Puntos</div> : <div><img alt="" src={BuyBlue} /></div>}
                 <img alt="product" src={product.img.url}/>
                 <div className="txt">

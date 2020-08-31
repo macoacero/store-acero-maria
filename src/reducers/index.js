@@ -47,10 +47,20 @@ const uploadRedeemProduct = (state = [], action) => {
   }
 }
 
+const errorRedeem= (state = false, action) => {
+  switch (action.type) {
+    case 'ERROR_REDEEM':
+      return action.errorRed
+    default:
+      return state  }
+}
+
+
 export default combineReducers({
   loadingUser,
   loadingProducts,
   loadingError,
   loadingInProgress,
-  uploadRedeemProduct
+  uploadRedeemProduct,
+  errorRedeem
 })

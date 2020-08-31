@@ -37,6 +37,13 @@ export const uploadRedeemProduct = (productId) => ({
   productId
 });
 
+export const errorRedeem = (bool) => {
+  return ({
+    type: "ERROR_REDEEM",
+    errorRed: bool
+  });
+}
+
 
 const headers = {
   "Content-Type": "application/json",
@@ -105,7 +112,7 @@ export const getProducts = () => {
 
   export const addPoints = (points) => {
     return (dispatch) => {
-      const data = { "new Points": 1000 };
+      const data = { "new Points": 5000 };
       dispatch(loadingError(false));
   
       fetch("https://coding-challenge-api.aerolab.co/user/points", {
@@ -131,7 +138,7 @@ export const getProducts = () => {
 
       const data = { "productId": productId };
 
-      dispatch(loadingError(false));
+      dispatch(errorRedeem(false));
 
       fetch('https://coding-challenge-api.aerolab.co/redeem', {
         method: 'POST', 
@@ -146,7 +153,7 @@ export const getProducts = () => {
           return response;
         })
         .then((productId) => dispatch(uploadRedeemProduct(productId)))
-        .catch(() => dispatch(loadingError(true)));
+        .catch(() => dispatch(errorRedeem(true)));
     };
   };
 
