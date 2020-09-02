@@ -26,6 +26,7 @@ useEffect(() => {
 
   return (
     <div className="container">
+      <h2>Lista de productos</h2>
       <div className="row">
         {
           products.map((product, i) =>

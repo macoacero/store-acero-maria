@@ -48,7 +48,7 @@ export const errorRedeem = (bool) => {
 const headers = {
   "Content-Type": "application/json",
   Accept: "application/json",
-  Authorization: "Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjQ0NmUzZjc0MjM1MjAwMWVkOTA5N2EiLCJpYXQiOjE1OTgzMjAxOTF9.SvYm_3UWhP11QddDsVSJU7rVdMnAzNzl9fLO4dcPc4k"
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjQ0NmUzZjc0MjM1MjAwMWVkOTA5N2EiLCJpYXQiOjE1OTgzMjAxOTF9.SvYm_3UWhP11QddDsVSJU7rVdMnAzNzl9fLO4dcPc4k`
 }
 
 export const getProducts = () => {
@@ -112,7 +112,8 @@ export const getProducts = () => {
 
   export const addPoints = (points) => {
     return (dispatch) => {
-      const data = { "new Points": 5000 };
+      const data ={ "amount": points };
+
       dispatch(loadingError(false));
   
       fetch("https://coding-challenge-api.aerolab.co/user/points", {

@@ -1,18 +1,17 @@
-import React from 'react';
-import '../styles.scss';
-import Products from '../containers/Products';
-import History from '../containers/History';
-import Header from '../containers/Header';
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import Products from '../containers/Products';
+import History from '../containers/History';
+import Header from '../containers/Header';
+import '../styles.scss';
 
-function App() {
+export default function App() {
   return (
-
     <div className="App">
       <Header />
       <Router>
@@ -23,17 +22,17 @@ function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/historial">historial</Link>
+                <Link to="/historial">Historial</Link>
               </li>
             </ul>
           </nav>
 
           <Switch>
-            <Route path="/">
-              <Products />
-            </Route>
             <Route path="/historial">
               <History />
+            </Route>
+            <Route path="/">
+              <Products />
             </Route>
           </Switch>
         </div>
@@ -41,5 +40,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

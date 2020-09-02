@@ -9,15 +9,15 @@ const options = [
 
 const Header = ({ onLoadUser, user, loadPoints }) => {
 
-const [points, setPoint] = useState("");
+const [points, setPoints] = useState("");
   
 useEffect(() => {
   onLoadUser();
     }, [onLoadUser]);
 
-  const handleChangePoints = points => {
-    setPoint(points);
-    loadPoints(points)
+  const handleChange = points => {
+    setPoints(points);
+    loadPoints(points.value)
   };
 
   return (
@@ -29,8 +29,7 @@ useEffect(() => {
       <div className="header">
         <div className="container">
           <div className="row">
-            <Select options={options} value={points} onChange={() => handleChangePoints(points.value)} />
-            {console.log(points.value)}
+            <Select options={options} value={points.value} onChange={handleChange} />
           </div>
         </div>
       </div>
