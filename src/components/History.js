@@ -6,31 +6,15 @@ useEffect(() => {
   onLoadHistory();
     }, [onLoadHistory]);
 
-  if (hasError) {
-    return (
-      <div className="container">
-        <h6>Error cargando los productos. Por favor intente más tarde.</h6>
-      </div>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="container">
-        <h6>Loading…</h6>
-      </div>
-    )
-  }
-
   return (
     <div className="container">
       <h2>Historial</h2>
       <div className="row">
-        {
+      {isLoading ? <h6>Loading…</h6> : !hasError ?
           history.map((product, i) =>
             <div className="col-sm-4">
               <div className="card" key={i}>
-                <img alt="product" src={product.img.url}/>
+                <img alt="product" src={product.img.url} className="image-prod"/>
                 <div className="txt">
                   <span className="category" >
                     {product.category}
@@ -40,7 +24,7 @@ useEffect(() => {
                   </span>
                 </div>
               </div>
-          </div>)
+          </div>) : <div>Error cargando los productos. Por favor intente más tarde.</div>
         }
       </div>
     </div>

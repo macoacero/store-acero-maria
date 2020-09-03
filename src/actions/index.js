@@ -42,6 +42,13 @@ export const errorRedeem = (bool) => {
     type: "ERROR_REDEEM",
     errorRed: bool
   });
+};
+
+export const filterByCategory =(category) => {
+  return ({
+    type: "FILTER_CATEGORY",
+    category
+  });
 }
 
 
@@ -62,11 +69,12 @@ export const getProducts = () => {
           if (!response.ok) {
             throw Error(response.statusText);
           }
-  
           dispatch(loadingInProgress(false));
   
           return response;
+          
         })
+        
         .then((response) => response.json())
         .then((products) => dispatch(loadingProducts(products)))
         .catch(() => dispatch(loadingError(true)));
@@ -136,7 +144,6 @@ export const getProducts = () => {
 
   export const redeemProduct = (productId) => {
     return (dispatch) => {
-
       const data = { "productId": productId };
 
       dispatch(errorRedeem(false));
@@ -157,5 +164,4 @@ export const getProducts = () => {
         .catch(() => dispatch(errorRedeem(true)));
     };
   };
-
 

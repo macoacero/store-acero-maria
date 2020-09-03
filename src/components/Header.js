@@ -1,35 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import Select from "react-select";
 
-const options = [
-  { value: 1000, label: "1000" },
-  { value: 5000, label: "5000" },
-  { value: 7500, label: "7500" }
-];
 
-const Header = ({ onLoadUser, user, loadPoints }) => {
+const Header = ({ onLoadUser, user, loadPoints, products }) => {
 
-const [points, setPoints] = useState("");
-  
-useEffect(() => {
-  onLoadUser();
-    }, [onLoadUser]);
+  const customStyles = {
+    container: () => ({
+      width: 200,
+    }),
+    menu:() => ({
+      width: 200,
+      background: '#ffffff',
+      position: 'absolute'
+    }),
+  }
 
-  const handleChange = points => {
+  const pointsOptions = [
+    { value: 1000, label: "1000" },
+    { value: 5000, label: "5000" },
+    { value: 7500, label: "7500" }
+  ];
+ 
+
+  const [points, setPoints] = useState("");
+    
+  useEffect(() => {
+    onLoadUser();
+      }, [onLoadUser, points]);
+
+  const handleChangePoints = points => {
     setPoints(points);
-    loadPoints(points.value)
+    loadPoints(points.value);
   };
 
   return (
     <React.Fragment>
       <div className="top-bar">
-        <div>{user.name}</div>
-        <div>{user.points}</div>
+        <div className="container">
+          <div className="row">
+            <div>{user.name}</div>
+            <div>{user.points}</div>
+          </div>
+        </div>
+        <Select styles={customStyles} placeholder=" Agregar puntos" options={pointsOptions} value={points.value} onChange={handleChangePoints} />
       </div>
       <div className="header">
         <div className="container">
           <div className="row">
-            <Select options={options} value={points.value} onChange={handleChange} />
           </div>
         </div>
       </div>
