@@ -15,16 +15,12 @@ const ProductsList = ({ onLoadProd, products, hasError, isLoading, user, onClick
     }),
   }
 
-useEffect(() => {
-  onLoadProd();
-    }, [onLoadProd]);
-
 const [newcategory, setNewcategory] = useState(products);
 const [category, setCategory] = useState("");
 
-const unique = products.filter((thing, index, self) =>
+const unique = products.filter((cat, index, self) =>
   index === self.findIndex((t) => (
-    t.category === thing.category
+    t.category === cat.category
   ))
 )
 
@@ -32,15 +28,31 @@ const optionsCategory = unique.map(prod => {
   return { value: prod.category, label: prod.category }
 });
 
-let newProducts = [...products];
+
+const filerCategory = (category) => {
+  let newProducts = [...products];
+
+  if (category.value) {
+    newProducts = newProducts.filter(cat => cat.category === category.value);
+  }
+  setNewcategory(newProducts);
+}
 
 const handleChangeCategory = category => {
   setCategory(category);
+
+  let newProducts = [...products];
+
   if (category.value) {
     newProducts = newProducts.filter(cat => cat.category === category.value);
   }
   setNewcategory(newProducts);
 };
+
+useEffect(() => {
+  onLoadProd();
+  filerCategory(category)
+}, [onLoadProd]);
 
   return (
     <div className="container">
