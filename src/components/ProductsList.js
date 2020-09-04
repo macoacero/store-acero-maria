@@ -38,9 +38,14 @@ const handleChangeCategory = category => {
 let [page, setPage] = useState(1);
 const PER_PAGE = 12;
 
-const count = Math.ceil(category.value === 'all' || category === '' ?  products.length / PER_PAGE :  products.filter(cat => cat.category === category.value).length / PER_PAGE);
-const _DATA = usePagination(category.value === 'all' || category === '' ? products :  products.filter(cat => cat.category === category.value)
-, PER_PAGE);
+const count = Math.ceil(
+  category.value === 'all' || category === '' ?  
+  products.length / PER_PAGE :  
+  products.filter(cat => cat.category === category.value).length / PER_PAGE);
+
+const _DATA = usePagination(
+  category.value === 'all' || category === '' ? 
+  products :  products.filter(cat => cat.category === category.value), PER_PAGE);
 
 const handleChange = (e, p) => {
   setPage(p);
