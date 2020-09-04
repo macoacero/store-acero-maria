@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fb39842a2ba92d574360b6f1a64ad151",
+    "revision": "c990168f2a9f64e22e89805842731a35",
     "url": "/github.io/store-acero-maria/index.html"
   },
   {
-    "revision": "e30014a1bab28bc6b64e",
-    "url": "/github.io/store-acero-maria/static/css/main.699a2210.chunk.css"
+    "revision": "e400fd1267ec5461f28e",
+    "url": "/github.io/store-acero-maria/static/css/main.15fd9c49.chunk.css"
   },
   {
     "revision": "b85a3178775e3b8d4df0",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/github.io/store-acero-maria/static/js/2.556c91f0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e30014a1bab28bc6b64e",
+    "revision": "e400fd1267ec5461f28e",
     "url": "/github.io/store-acero-maria/static/js/main.7543ce1f.chunk.js"
   },
   {
@@ -26,5 +26,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2f11a957b72ff4a5c46227027cf46115",
     "url": "/github.io/store-acero-maria/static/media/buy-blue.2f11a957.svg"
+  },
+  {
+    "revision": "f0b98264ce8c93768fbf37c263885aaa",
+    "url": "/github.io/store-acero-maria/static/media/header-x1.f0b98264.png"
   }
 ]);
