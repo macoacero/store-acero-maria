@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/store-acero-maria/precache-manifest.e3830b76dd8567df8316b610eb9d596d.js"
+  "/store-acero-maria/precache-manifest.30af730a3528fa2a31239c7fd991b94f.js"
 );
 
 self.addEventListener('message', (event) => {
