@@ -28,35 +28,23 @@ const optionsCategory = unique.map(prod => {
   return { value: prod.category, label: prod.category }
 });
 
-
-const filerCategory = (category) => {
-  let newProducts = [...products];
-
-  if (category.value) {
-    newProducts = newProducts.filter(cat => cat.category === category.value);
-  }
-  setNewcategory(newProducts);
-}
-
 const handleChangeCategory = category => {
   setCategory(category);
-
-  let newProducts = [...products];
-
-  if (category.value) {
-    newProducts = newProducts.filter(cat => cat.category === category.value);
-  }
-  setNewcategory(newProducts);
 };
 
 useEffect(() => {
   onLoadProd();
-  filerCategory(category)
 }, [onLoadProd]);
+
+useEffect(() => {
+  setNewcategory(
+    category === '' ? products : products = products.filter(cat => cat.category === category.value)
+  )
+}, [category, products]);
 
   return (
     <div className="container">
-      <Select styles={customStyles} options={optionsCategory} value={category.value} onChange={handleChangeCategory}/>
+      <Select placeholder="Categoría" styles={customStyles} options={optionsCategory} value={category.value} onChange={handleChangeCategory}/>
       <h2>Lista de productos</h2>
       <div className="row">
         {isLoading ? <h6>Loading…</h6> : !hasError ?
@@ -66,8 +54,8 @@ useEffect(() => {
               {user.points >= product.cost ?
                 <div className="redeem-product">
                   {product.cost}
-                  <button className="" onClick={() => onClickRedeem(product._id)}>Redimir ahora</button>
-                  {errorRed ? "No se pudo redimir el producto. Intente más tarde" : null}
+                  <button className="redeem-button" onClick={() => onClickRedeem(product._id)}>Redimir ahora</button>
+                  {/* {errorRed ? "No se pudo redimir el producto. Intente más tarde" : null} */}
                 </div> : null}
                 {console.log('errorRed', errorRed)}
                 {user.points < product.cost ? <div>Faltan: {product.cost - user.points} Puntos</div> : <div><img alt="" src={BuyBlue} /></div>}

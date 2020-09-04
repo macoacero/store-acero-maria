@@ -38,8 +38,8 @@ const Header = ({ onLoadUser, user, loadPoints, products }) => {
       <div className="top-bar">
         <div className="container">
           <div className="row">
-            <div>{user.name}</div>
-            <div>{user.points}</div>
+            <div className="user-name">{user.name}</div>
+            <div className="points">{user.points}</div>
           </div>
         </div>
         <Select styles={customStyles} placeholder=" Agregar puntos" options={pointsOptions} value={points.value} onChange={handleChangePoints} />

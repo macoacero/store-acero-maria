@@ -50,7 +50,7 @@ const loadingHistory = (state = [], action) => {
 const uploadRedeemProduct = (state = [], action) => {
   switch (action.type) {
     case 'REDEEM_PRODUCT':
-      return action.user
+      return action.productId
     default:
       return state
   }

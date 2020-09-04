@@ -44,7 +44,7 @@ export const errorRedeem = (bool) => {
   });
 };
 
-export const filterByCategory =(category) => {
+export const filterByCategory = (category) => {
   return ({
     type: "FILTER_CATEGORY",
     category
@@ -59,109 +59,110 @@ const headers = {
 }
 
 export const getProducts = () => {
-    return (dispatch) => {
-      dispatch(clearProducts());
-      dispatch(loadingError(false));
-      dispatch(loadingInProgress(true));
-  
-      fetch("https://coding-challenge-api.aerolab.co/products", {headers})
-        .then((response) => {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }
-          dispatch(loadingInProgress(false));
-  
-          return response;
-          
-        })
-        
-        .then((response) => response.json())
-        .then((products) => dispatch(loadingProducts(products)))
-        .catch(() => dispatch(loadingError(true)));
-        
-    };
-  };
-  
-  export const getUser = () => {
-    return (dispatch) => {
-      dispatch(loadingError(false));
-  
-      fetch("https://coding-challenge-api.aerolab.co/user/me", {headers})
-        .then((response) => {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }  
-          return response;
-        })
-        .then((response) => response.json())
-        .then((user) => dispatch(loadingUser(user)))
-        .catch(() => dispatch(loadingError(true)));
-        
-    };
-  };
+  return (dispatch) => {
+    dispatch(clearProducts());
+    dispatch(loadingError(false));
+    dispatch(loadingInProgress(true));
 
-  export const getHistory = () => {
-    return (dispatch) => {
-      dispatch(loadingError(false));
-  
-      fetch("https://coding-challenge-api.aerolab.co/user/history", {headers})
-        .then((response) => {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }  
-          return response;
-        })
-        .then((response) => response.json())
-        .then((history) => dispatch(loadingHistory(history)))
-        .catch(() => dispatch(loadingError(true)));
-        
-    };
-  };
+    fetch("https://coding-challenge-api.aerolab.co/products", { headers })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        dispatch(loadingInProgress(false));
 
-  export const addPoints = (points) => {
-    return (dispatch) => {
-      const data ={ "amount": points };
+        return response;
 
-      dispatch(loadingError(false));
-  
-      fetch("https://coding-challenge-api.aerolab.co/user/points", {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(data),
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }  
-          return response;
-        })
-        .then((response) => response.json())
-        .then((points) => dispatch(uploadPoint(points)))
-        .catch(() => dispatch(loadingError(true)));
-        
-    };
+
+      .then((response) => response.json())
+      .then((products) => dispatch(loadingProducts(products)))
+      .catch(() => dispatch(loadingError(true)));
+
   };
+};
 
-  export const redeemProduct = (productId) => {
-    return (dispatch) => {
-      const data = { "productId": productId };
+export const getUser = () => {
+  return (dispatch) => {
+    dispatch(loadingError(false));
 
-      dispatch(errorRedeem(false));
+    fetch("https://coding-challenge-api.aerolab.co/user/me", { headers })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((user) => dispatch(loadingUser(user)))
+      .catch(() => dispatch(loadingError(true)));
 
-      fetch('https://coding-challenge-api.aerolab.co/redeem', {
-        method: 'POST', 
-        headers,
-          body: JSON.stringify(data),
-        })
-        .then(response => response.json())
-        .then((response) => {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }  
-          return response;
-        })
-        .then((productId) => dispatch(uploadRedeemProduct(productId)))
-        .catch(() => dispatch(errorRedeem(true)));
-    };
   };
+};
+
+export const getHistory = () => {
+  return (dispatch) => {
+    dispatch(loadingError(false));
+
+    fetch("https://coding-challenge-api.aerolab.co/user/history", { headers })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((history) => dispatch(loadingHistory(history)))
+      .catch(() => dispatch(loadingError(true)));
+
+  };
+};
+
+export const addPoints = (points) => {
+  return (dispatch) => {
+    const data = { "amount": points };
+
+    dispatch(loadingError(false));
+
+    fetch("https://coding-challenge-api.aerolab.co/user/points", {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((points) => dispatch(uploadPoint(points)))
+      .catch(() => dispatch(loadingError(true)));
+
+  };
+};
+
+export const redeemProduct = (productId) => {
+  return (dispatch) => {
+    const data = { "productId": productId };
+
+    dispatch(errorRedeem(false));
+    fetch('https://coding-challenge-api.aerolab.co/redeem', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data),
+    })
+
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(() => dispatch(uploadRedeemProduct(productId)))
+      .catch((error) => {
+        dispatch(errorRedeem(true))
+      });
+  };
+};
 
