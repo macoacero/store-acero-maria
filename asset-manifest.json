@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/github.io/store-acero-maria/static/css/main.79e7f76d.chunk.css",
+    "main.css": "/github.io/store-acero-maria/static/css/main.699a2210.chunk.css",
     "main.js": "/github.io/store-acero-maria/static/js/main.7543ce1f.chunk.js",
     "main.js.map": "/github.io/store-acero-maria/static/js/main.7543ce1f.chunk.js.map",
     "runtime-main.js": "/github.io/store-acero-maria/static/js/runtime-main.e06b28e3.js",
@@ -8,16 +8,16 @@
     "static/js/2.556c91f0.chunk.js": "/github.io/store-acero-maria/static/js/2.556c91f0.chunk.js",
     "static/js/2.556c91f0.chunk.js.map": "/github.io/store-acero-maria/static/js/2.556c91f0.chunk.js.map",
     "index.html": "/github.io/store-acero-maria/index.html",
-    "precache-manifest.51ac0c86d9c3e6a112d52cce55d2e007.js": "/github.io/store-acero-maria/precache-manifest.51ac0c86d9c3e6a112d52cce55d2e007.js",
+    "precache-manifest.7052704c78699ab75a8e6baff4f86379.js": "/github.io/store-acero-maria/precache-manifest.7052704c78699ab75a8e6baff4f86379.js",
     "service-worker.js": "/github.io/store-acero-maria/service-worker.js",
-    "static/css/main.79e7f76d.chunk.css.map": "/github.io/store-acero-maria/static/css/main.79e7f76d.chunk.css.map",
+    "static/css/main.699a2210.chunk.css.map": "/github.io/store-acero-maria/static/css/main.699a2210.chunk.css.map",
     "static/js/2.556c91f0.chunk.js.LICENSE.txt": "/github.io/store-acero-maria/static/js/2.556c91f0.chunk.js.LICENSE.txt",
     "static/media/buy-blue.svg": "/github.io/store-acero-maria/static/media/buy-blue.2f11a957.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.e06b28e3.js",
     "static/js/2.556c91f0.chunk.js",
-    "static/css/main.79e7f76d.chunk.css",
+    "static/css/main.699a2210.chunk.css",
     "static/js/main.7543ce1f.chunk.js"
   ]
 }

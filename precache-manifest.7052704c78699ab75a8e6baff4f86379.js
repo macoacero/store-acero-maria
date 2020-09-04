@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1beae7243f49bb4f3e022ff01fb0cb63",
+    "revision": "fb39842a2ba92d574360b6f1a64ad151",
     "url": "/github.io/store-acero-maria/index.html"
   },
   {
-    "revision": "6c3f04b8ca50fa033c9a",
-    "url": "/github.io/store-acero-maria/static/css/main.79e7f76d.chunk.css"
+    "revision": "e30014a1bab28bc6b64e",
+    "url": "/github.io/store-acero-maria/static/css/main.699a2210.chunk.css"
   },
   {
     "revision": "b85a3178775e3b8d4df0",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/github.io/store-acero-maria/static/js/2.556c91f0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6c3f04b8ca50fa033c9a",
+    "revision": "e30014a1bab28bc6b64e",
     "url": "/github.io/store-acero-maria/static/js/main.7543ce1f.chunk.js"
   },
   {
