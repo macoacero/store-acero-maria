@@ -22,8 +22,6 @@ const loadingProducts = (state = [], action) => {
   switch (action.type) {
     case 'LOADING_PRODUCTS':
       return action.products
-    case 'CLEAR_PRODUCTS':
-      return []
     default:
       return state
   }

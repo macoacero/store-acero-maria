@@ -28,10 +28,6 @@ export const uploadPoint = (points) => ({
   points
 });
 
-export const clearProducts = () => ({
-  type: "CLEAR_PRODUCTS"
-});
-
 export const uploadRedeemProduct = (productId) => ({
   type: "REDEEM_PRODUCT",
   productId
@@ -60,7 +56,6 @@ const headers = {
 
 export const getProducts = () => {
   return (dispatch) => {
-    dispatch(clearProducts());
     dispatch(loadingError(false));
     dispatch(loadingInProgress(true));
 

@@ -18,7 +18,6 @@ const ProductsList = ({ onLoadProd, products, hasError, isLoading, user, onClick
     }),
   }
 
-const [newcategory, setNewcategory] = useState(products);
 const [category, setCategory] = useState("");
 
 const unique = products.filter((cat, index, self) =>
