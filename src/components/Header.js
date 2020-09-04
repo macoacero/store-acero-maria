@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Select from "react-select";
 
-
 const Header = ({ onLoadUser, user, loadPoints, products }) => {
 
   const customStyles = {
@@ -39,10 +38,10 @@ const Header = ({ onLoadUser, user, loadPoints, products }) => {
         <div className="container">
           <div className="row">
             <div className="user-name">{user.name}</div>
-            <div className="points">{user.points}</div>
+            <div className="points">{user.points} <span>puntos</span></div>
           </div>
         </div>
-        <Select styles={customStyles} placeholder=" Agregar puntos" options={pointsOptions} value={points.value} onChange={handleChangePoints} />
+        <Select styles={customStyles} placeholder=" Agregar puntos" options={pointsOptions} onChange={handleChangePoints} />
       </div>
       <div className="header">
         <div className="container">

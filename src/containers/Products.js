@@ -8,7 +8,8 @@ const mapStateToProps = (state) => ({
   isLoading: state.loadingInProgress,
   user: state.loadingUser,
   productId: state.uploadRedeemProduct,
-  errorRed: state.errorRedeem
+  errorRed: state.errorRedeem,
+  points: state.uploadPoint
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
