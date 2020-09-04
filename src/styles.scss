@@ -28,34 +28,75 @@ body {
   }
 }
 .header {
-  background: url("./images/header-x1.png") no-repeat center;
-  background-size: cover;
+  background: #15dbff url("./images/header-x1.png") no-repeat right;
+  background-size: contain;
   width: 100%;
-  height: 300px;
+  height: 200px;
   margin-bottom: 30px;
 }
 nav {
   ul {
     display: flex;
     list-style: none;
+    padding: 0 15px;
     li {
-      padding: 0 15px;
+      padding: 0 15px 0 0;
+      text-align: left;
     }
   }
 }
+h2 {
+  margin-top: 30px;
+}
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 252px;
   background: #ffffff;
   margin-bottom: 15px;
+
+  .txt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .redeemable {
+    margin: 10px;
+    width: 30px;
+  }
+
+  .missing-points {
+    background: #cccccc;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 600;
+  }
 
   .redeem-product {
     display: none;
 
     .redeem-button {
-      background: rgba(256, 256, 256, 0.5);
+      background: rgba(256, 256, 256, 0.8);
       border: 0;
       border-radius: 10px;
       margin: 0 20px;
-      padding: 10px 0;
+      padding: 10px 15px;
+      font-size: 18px;
+      margin-top: 15px;
+      font-weight: 600;
     }
   }
 
@@ -68,10 +109,17 @@ nav {
     .redeem-product {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       width: 100%;
       height: 100%;
       background: rgba(71, 155, 215, 0.8);
+    }
+    .points-redeem {
+      font-size: 18px;
+      font-weight: 600;
+      color: #e4f207;
     }
   }
 }
