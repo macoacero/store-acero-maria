@@ -154,7 +154,10 @@ export const redeemProduct = (productId) => {
         }
         return response.json();
       })
-      .then(() => dispatch(uploadRedeemProduct(productId)))
+      .then((data) => {
+        dispatch(uploadRedeemProduct(productId))
+        dispatch(getUser())
+      })
       .catch((error) => {
         dispatch(errorRedeem(true))
       });

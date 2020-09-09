@@ -25,6 +25,7 @@ const Header = ({ onLoadUser, user, loadPoints, products }) => {
     
   useEffect(() => {
     onLoadUser();
+    setPoints(points);
       }, [onLoadUser, points]);
 
   const handleChangePoints = points => {
